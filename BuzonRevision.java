@@ -5,12 +5,16 @@ public class BuzonRevision {
     private List<Producto> productos = new ArrayList<>();
     private int capacidadMaxima;
 
-    public synchronized Producto retirar(){// preguntar donde se pone la espera semi-activa
+    public BuzonRevision(int capacidadMaxima) {
+        this.capacidadMaxima = capacidadMaxima;
+    }
+
+    public synchronized Producto retirar(){
         if (productos.size()==0){
             return null;
         }
         Producto producto = productos.remove(0);
-        notify();
+        notifyAll();
         return producto;
     }
     public synchronized void añadir(Producto producto){
