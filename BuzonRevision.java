@@ -9,7 +9,9 @@ public class BuzonRevision {
         if (productos.size()==0){
             return null;
         }
-        return productos.remove(0);
+        Producto producto = productos.remove(0);
+        notify();
+        return producto;
     }
     public synchronized void añadir(Producto producto){
         while(productos.size()>=capacidadMaxima){
@@ -20,7 +22,6 @@ public class BuzonRevision {
             }
         }
         productos.add(producto);
-        notify();
     }
 
 
