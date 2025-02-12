@@ -11,9 +11,14 @@ public class OperarioProductor extends Thread {
         this.revision= revision;
     }
     public void run() {
-        while(reproceso.saber()){
-            Producto produc= reproceso.retirar();
-            revision.añadir(produc);
+        while(true){
+            while(reproceso.saber()){
+                Producto produc= reproceso.retirar();
+                revision.añadir(produc);
+            }
+            Producto producto = new Producto();
+            revision.añadir(producto);
+
         }
     }
 
@@ -22,10 +27,6 @@ public class OperarioProductor extends Thread {
 
     public void reprocesar(){
 
-    }
-
-    public Producto generar(){
-        return new Producto();
     }
 
     public void almacenarBuzon(Producto producto){
