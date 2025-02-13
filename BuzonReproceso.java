@@ -5,14 +5,16 @@ public class BuzonReproceso {
     private int cantidad;
 
     public synchronized Producto retirar(){
-        return productos.removeFirst();
+        if (productos.size()==0){
+            return null;
+        }
+        Producto producto = productos.removeFirst();
+        return producto;
+
+    }
+    public synchronized void añadir(Producto producto){
+        productos.add(producto);
     }
 
-    public synchronized Boolean saber(){
-        if (productos.size()==0){
-            return false;
-        }
-        return true;
-    }
 
 }

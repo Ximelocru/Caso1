@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class OperarioEquipoCalidad extends Thread {
     private int id;
     private int productosRechazados;
@@ -6,11 +8,24 @@ public class OperarioEquipoCalidad extends Thread {
     private BuzonRevision revision;
 
     public void run() {
-        Producto producto= revision.retirar();
-        while (producto == null){
-            Thread.yield();
-            producto=revision.retirar();
+        while(true){
+            Producto producto= revision.retirar();
+            while (producto == null){
+                Thread.yield();
+                producto=revision.retirar();
+            }
+            int numero = numeror();
+            if (numero%7==0){
+
+            }
         }
+        
+    }
+
+    public int numeror(){
+        Random rand = new Random();
+        int numero = rand.nextInt(100) + 1;
+        return numero;
     }
 
 
