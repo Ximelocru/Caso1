@@ -6,6 +6,7 @@ public class OperarioEquipoCalidad extends Thread {
     private int maximoProductosRechazados;
     private static int total_deposito;
     private BuzonRevision revision;
+    private BuzonReproceso reproceso;
 
     public void run() {
         while(true){
@@ -15,8 +16,11 @@ public class OperarioEquipoCalidad extends Thread {
                 producto=revision.retirar();
             }
             int numero = numeror();
-            if (numero%7==0){
-
+            if (numero%7==0){//falta verificar el maximo
+                reproceso.añadir(producto);
+            }
+            else{
+                
             }
         }
         
