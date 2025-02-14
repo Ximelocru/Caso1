@@ -4,23 +4,31 @@ public class OperarioProductor extends Thread {
     private BuzonReproceso reproceso;
     private BuzonRevision revision;
 
-    public OperarioProductor(int id, String estado, BuzonReproceso reproceso, BuzonRevision revision){
+    public OperarioProductor(int id, BuzonReproceso reproceso, BuzonRevision revision){
         this.id= id;
-        this.estado= estado;
         this.reproceso= reproceso;
         this.revision= revision;
     }
     public void run() {
-        while(true){
+        Boolean terminar = true;
+        while(terminar){
             Producto produc= reproceso.retirar();
-            while(produc!=null){
+            if (produc!=null&& produc.estado== "FIN"){
+                terminar= false;
+            }
+            while(produc!=null&& terminar){
                 revision.añadir(produc);
                 produc= reproceso.retirar();
+                System.out.println("Se saca de reproceso el producto: ");
             }
-            Producto producto = new Producto();
+
+            Producto producto = new Producto("normal");
+            System.out.println("Se crea el producto: ");
             revision.añadir(producto);
 
         }
+
+        System.out.println("El productor: "+this.id +"finaliza");
     }
 
     //Ensayo

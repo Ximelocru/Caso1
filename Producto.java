@@ -1,5 +1,9 @@
 public class Producto {
     private int id;
-    private String estado;
+    public String estado;
+
+    public Producto(String estado){
+        this.estado= estado;
+    }
 
 }

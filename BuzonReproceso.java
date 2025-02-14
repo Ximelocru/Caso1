@@ -1,8 +1,13 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class BuzonReproceso {
-    private List<Producto> productos;
+    public List<Producto> productos;
     private int cantidad;
+
+    public BuzonReproceso(){
+        this.productos= new ArrayList<>();
+    }
 
     public synchronized Producto retirar(){
         if (productos.size()==0){
