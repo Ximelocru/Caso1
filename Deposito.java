@@ -13,7 +13,7 @@ public class Deposito {
 
     public synchronized int depositar(Producto producto){// precaucion acá, se debe de empezar a crear fin la cantidad de operarios
         contador++;
-        System.out.println(contador);
+        System.out.println("Entra el producto numero "+contador+" al deposito.");
         productos.add(producto);
         return productos.size();
     }

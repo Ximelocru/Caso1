@@ -29,6 +29,7 @@ public class OperarioEquipoCalidad extends Thread {
             int numero = numeror();
             if (numero%7==0 && productosRechazados<maximoProductosRechazados){
                 reproceso.añadir(producto);
+                System.out.println("Se rechaza el producto y se manda al reproceso.");
             }
             else{
                 //falta para cuando es el fin 
@@ -36,11 +37,12 @@ public class OperarioEquipoCalidad extends Thread {
                 if (deposito.productos.size()>=total_deposito){
                     Producto productico = new Producto("FIN");
                     reproceso.añadir(productico);
+                    revision.retirar();
                     terminar= false;
                 }
             }
         }
-        System.out.println("El operario: "+this.id +"finaliza");
+        System.out.println("El operario  "+this.id +" finaliza sus labores.");
         
     }
 
