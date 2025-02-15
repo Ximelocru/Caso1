@@ -11,17 +11,18 @@ public class OperarioProductor extends Thread {
     }
     public void run() {
         Boolean terminar = true;
+        System.out.println("----- Inicia a trabajar el productor "+ id+" -----");
         while(terminar){
             Producto produc= reproceso.retirar();
             while(produc!=null&& produc.estado!="FIN"){
                 revision.añadir(produc);
                 produc= reproceso.retirar();
-                System.out.println("Se saca un producto de fila de reprocesos ");
+                System.out.println("Operario " + id+" saca un producto de fila de reprocesos ");
             }
 
             if (produc== null){
                 Producto producto = new Producto("normal");
-                System.out.println("Se crea un nuevo producto");
+                System.out.println("Operario " + id+" crea un nuevo producto");
                 revision.añadir(producto);
             }
             if (produc!=null && (produc.estado=="FIN")){
@@ -30,7 +31,7 @@ public class OperarioProductor extends Thread {
 
         }
 
-        System.out.println("El productor "+this.id +" finaliza");
+        System.out.println("*** El productor "+this.id +" finaliza ***");
     }
 
 }

@@ -7,8 +7,6 @@ public class Deposito {
 
     public Deposito(){
         this.productos= new ArrayList<>();
-            
-        
     }
 
     public synchronized int depositar(Producto producto){// precaucion acá, se debe de empezar a crear fin la cantidad de operarios
