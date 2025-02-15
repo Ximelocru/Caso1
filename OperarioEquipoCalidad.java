@@ -33,7 +33,6 @@ public class OperarioEquipoCalidad extends Thread {
                 System.out.println("Se rechaza el producto y se manda al reproceso.");
             }
             else{
-                //falta para cuando es el fin 
                 deposito.depositar(producto);
                 if (deposito.productos.size()>=total_deposito){
                     Producto productico = new Producto("FIN");
