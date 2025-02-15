@@ -13,7 +13,7 @@ public class BuzonReproceso {
         if (productos.size()==0){
             return null;
         }
-        Producto producto = productos.removeFirst();
+        Producto producto = productos.remove(0);
         return producto;
 
     }
