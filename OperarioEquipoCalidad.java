@@ -34,10 +34,16 @@ public class OperarioEquipoCalidad extends Thread {
             }
             else{
                 deposito.depositar(producto);
+                System.out.println("Se deposita el porducto en el deposito.");
                 if (deposito.productos.size()>=total_deposito){
-                    Producto productico = new Producto("FIN");
+                    Producto productico = new Producto(-1,"FIN");
                     reproceso.añadir(productico);
-                    revision.retirar();
+                    producto= revision.retirar();
+                    while(producto != null){
+                        deposito.depositar(producto);
+                        System.out.println("Se deposita el porducto en el deposito, para desocupar el buzon de revisión.");
+                        producto= revision.retirar();
+                    }
                     terminar= false;
                 }
             }  

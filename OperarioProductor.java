@@ -1,6 +1,5 @@
 public class OperarioProductor extends Thread {
     private int id;
-    private String estado;
     private BuzonReproceso reproceso;
     private BuzonRevision revision;
     private static int idProducto;
