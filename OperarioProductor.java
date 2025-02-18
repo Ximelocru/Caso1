@@ -3,11 +3,13 @@ public class OperarioProductor extends Thread {
     private String estado;
     private BuzonReproceso reproceso;
     private BuzonRevision revision;
+    private static int idProducto;
 
     public OperarioProductor(int id, BuzonReproceso reproceso, BuzonRevision revision){
         this.id= id;
         this.reproceso= reproceso;
         this.revision= revision;
+        this.idProducto=1;
     }
     public void run() {
         Boolean terminar = true;
@@ -21,8 +23,9 @@ public class OperarioProductor extends Thread {
             }
 
             if (produc== null){
-                Producto producto = new Producto("normal");
-                System.out.println("Operario " + id+" crea un nuevo producto");
+                Producto producto = new Producto(idProducto,"normal");
+                idProducto++;
+                System.out.println("Operario " + id+" crea un nuevo producto con id "+ producto.id);
                 revision.añadir(producto);
             }
             if (produc!=null && (produc.estado=="FIN")){
