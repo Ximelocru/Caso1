@@ -19,7 +19,7 @@ public class OperarioEquipoCalidad extends Thread {
         this.maximoProductosRechazados= Math.floor(this.total_deposito*0.10);
     }
     public void run() {
-        System.out.println("----- Inicia a trabajr el operario de calidad "+id +" -----");
+        System.out.println("----- Inicia a trabajar el operario de calidad "+id +" -----");
         Boolean terminar = true;
         while(terminar){
             Producto producto= revision.retirar();
